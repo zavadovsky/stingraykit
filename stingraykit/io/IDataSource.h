@@ -176,6 +176,7 @@ namespace stingray
 		virtual size_t GetFreeSize() const = 0;
 		virtual size_t GetStorageSize() const = 0;
 
+		virtual optional<MetadataType> HasPacket() const = 0;
 		virtual bool HasEndOfDataOrException() const = 0;
 		virtual optional<MetadataType> WaitForPacket(const ICancellationToken& token) = 0;
 

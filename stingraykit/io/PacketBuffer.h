@@ -163,6 +163,12 @@ namespace stingray
 		size_t GetStorageSize() const override
 		{ return SharedCircularBuffer::ConstBufferLock(_buffer).GetStorageSize(); }
 
+		optional<MetadataType> HasPacket() const override
+		{
+			SharedCircularBuffer::ConstBufferLock bl(_buffer);
+			return _packetQueue.empty() ? null : make_optional_value(_packetQueue.front().Metadata);
+		}
+
 		bool HasEndOfDataOrException() const override
 		{
 			SharedCircularBuffer::ConstBufferLock bl(_buffer);
