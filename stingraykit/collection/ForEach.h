@@ -124,12 +124,12 @@ namespace stingray
 #define IN ,
 #define WHERE ,
 #define FOR_EACH__IMPL(ItemDecl_, SomethingToEnumerate_, ...) \
-		for (bool __broken__ = false; !__broken__; __broken__ = true) \
-			for (::stingray::shared_ptr<::stingray::IEnumerator<typename ::stingray::Detail::GetItemTypeFromItemDecl<void (*) (ItemDecl_)>::ValueT>> __en__(::stingray::Detail::GetForEachEnumeratorCaster(::stingray::ToEnumerator(SomethingToEnumerate_))); \
-					__en__ && __en__->Valid() && !__broken__; \
-					__en__->Next()) \
-				 for (bool __dummy_bool__ = true; __dummy_bool__ && !__broken__; ) \
-					 for (ItemDecl_ = __en__->Get(); __dummy_bool__ && ((__dummy_bool__ = false) == false) && ::stingray::Detail::ForEachItemFilter(true, ##__VA_ARGS__) && (__broken__ = true); __broken__ = false)
+		for (bool STINGRAYKIT_CAT(__broken__, __LINE__) = false; !STINGRAYKIT_CAT(__broken__, __LINE__); STINGRAYKIT_CAT(__broken__, __LINE__) = true) \
+			for (::stingray::shared_ptr<::stingray::IEnumerator<typename ::stingray::Detail::GetItemTypeFromItemDecl<void (*) (ItemDecl_)>::ValueT>> STINGRAYKIT_CAT(__en__, __LINE__)(::stingray::Detail::GetForEachEnumeratorCaster(::stingray::ToEnumerator(SomethingToEnumerate_))); \
+					STINGRAYKIT_CAT(__en__, __LINE__) && STINGRAYKIT_CAT(__en__, __LINE__)->Valid() && !STINGRAYKIT_CAT(__broken__, __LINE__); \
+					STINGRAYKIT_CAT(__en__, __LINE__)->Next()) \
+				 for (bool STINGRAYKIT_CAT(__dummy_bool__, __LINE__) = true; STINGRAYKIT_CAT(__dummy_bool__, __LINE__) && !STINGRAYKIT_CAT(__broken__, __LINE__); ) \
+					 for (ItemDecl_ = STINGRAYKIT_CAT(__en__, __LINE__)->Get(); STINGRAYKIT_CAT(__dummy_bool__, __LINE__) && ((STINGRAYKIT_CAT(__dummy_bool__, __LINE__) = false) == false) && ::stingray::Detail::ForEachItemFilter(true, ##__VA_ARGS__) && (STINGRAYKIT_CAT(__broken__, __LINE__) = true); STINGRAYKIT_CAT(__broken__, __LINE__) = false)
 
 	/** @} */
 
