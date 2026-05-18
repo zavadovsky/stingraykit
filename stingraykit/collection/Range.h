@@ -819,7 +819,7 @@ namespace stingray
 		template < typename Range_ >
 		struct RangeFlattenerHelper
 		{
-			using SubRangeType = typename Detail::ToRangeImpl<typename RemoveReference<typename Range_::ValueType>::ValueT>::ValueT;
+			using SubRangeType = typename Detail::ToRangeImpl<typename If<Range_::ReturnsTemporary, typename Decay<typename Range_::ValueType>::ValueT, typename RemoveReference<typename Range_::ValueType>::ValueT>::ValueT>::ValueT;
 			using ValueType = typename SubRangeType::ValueType;
 
 			using Category = typename GetGeneralCategoryHelper<typename GetGeneralCategoryHelper<typename Range_::Category, typename SubRangeType::Category>::ValueT, std::bidirectional_iterator_tag>::ValueT;
