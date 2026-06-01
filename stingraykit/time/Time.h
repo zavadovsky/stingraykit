@@ -213,7 +213,7 @@ namespace stingray
 		TimeDuration			_allowedJitter;
 
 	public:
-		TimeCmp(TimeDuration allowedJitter = TimeDuration()) : _allowedJitter(allowedJitter) { }
+		explicit TimeCmp(TimeDuration allowedJitter = TimeDuration()) : _allowedJitter(allowedJitter) { }
 
 		int operator () (Time lhs, Time rhs) const;
 	};
