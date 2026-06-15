@@ -94,12 +94,7 @@ namespace stingray
 
 		static bool GetThreadStats(u64 gid, u64 id, Stat& stat)
 		{
-#ifndef PLATFORM_STAPI
 			std::string filename = StringBuilder() % "/proc/" % gid % "/task/" % id % "/stat";
-#else
-			// Looks like in ST linux correct CPU usage for thread 123 is accessible at /proc/123/task/123/stat
-			std::string filename = StringBuilder() % "/proc/" % id % "/task/" % id % "/stat";
-#endif
 
 			int stat_f = open(filename.c_str(), O_RDONLY);
 			if (stat_f != -1)

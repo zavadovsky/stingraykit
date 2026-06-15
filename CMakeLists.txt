@@ -171,11 +171,6 @@ set(stingraykit_SRC
 	stingraykit/time/Time.cpp
 )
 
-
-if (PLATFORM_STAPI)
-	list(APPEND STINGRAYKIT_DEFINITIONS -DPLATFORM_STAPI=1)
-endif (PLATFORM_STAPI)
-
 if (PLATFORM_POSIX)
 	list(APPEND STINGRAYKIT_DEFINITIONS -DPLATFORM_POSIX=1)
 
@@ -225,7 +220,7 @@ if ((CMAKE_C_COMPILER_ID MATCHES "GNU") OR (CMAKE_C_COMPILER_ID MATCHES "Clang")
 	endif (HAVE_SELF_INIT_WARNING)
 
 	set(COMMON_FLAGS "${COMMON_FLAGS} -fno-strict-aliasing")
-	message(STATUS "strict aliasing was turned off [frequent crashes on mips/sh4, v8 crash]")
+	message(STATUS "strict aliasing was turned off [frequent crashes on mips, v8 crash]")
 
 	separate_arguments(DUMP_COMPILER_VERSION_COMMAND UNIX_COMMAND "${CMAKE_C_COMPILER} ${CMAKE_C_COMPILER_ARG1} -dumpversion")
 	execute_process(COMMAND ${DUMP_COMPILER_VERSION_COMMAND} OUTPUT_VARIABLE COMPILER_VERSION)
