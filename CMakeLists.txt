@@ -232,9 +232,6 @@ if ((CMAKE_C_COMPILER_ID MATCHES "GNU") OR (CMAKE_C_COMPILER_ID MATCHES "Clang")
 		if (COMPILER_VERSION_MAJOR LESS 6)
 			message(FATAL_ERROR "GCC version ${COMPILER_VERSION} is not supported, 6.x ow newer required")
 		endif (COMPILER_VERSION_MAJOR LESS 6)
-
-		set(COMMON_FLAGS "${COMMON_FLAGS} -fno-expensive-optimizations")
-		message(STATUS "expensive optimizations was turned off [buggy codegeneration on sh4]")
 	endif (CMAKE_C_COMPILER_ID MATCHES "GNU")
 
 	if (CMAKE_C_COMPILER_ID MATCHES "Clang")
