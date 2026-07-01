@@ -10,8 +10,8 @@
 
 #include <stingraykit/io/IDataSource.h>
 #include <stingraykit/io/SharedCircularBuffer.h>
-#include <stingraykit/log/Logger.h>
 #include <stingraykit/signal/signals.h>
+#include <stingraykit/string/ToString.h>
 
 #include <deque>
 #include <string.h>
@@ -37,8 +37,6 @@ namespace stingray
 		};
 
 	private:
-		static NamedLogger					s_logger;
-
 		const bool							_discardOnOverflow;
 		signal<OnOverflowSignature>			_onOverflow;
 
@@ -121,8 +119,6 @@ namespace stingray
 			{
 				if (_discardOnOverflow)
 				{
-					s_logger.Warning() << "Process: overflow " << data.size() << " bytes";
-
 					_onOverflow(data.size());
 					return true;
 				}
@@ -208,9 +204,6 @@ namespace stingray
 		signal_connector<OnOverflowSignature> OnOverflow() const override
 		{ return _onOverflow.connector(); }
 	};
-
-	template < typename MetadataType >
-	STINGRAYKIT_DEFINE_NAMED_LOGGER(PacketBuffer<MetadataType>, "PacketBuffer");
 
 }
 
