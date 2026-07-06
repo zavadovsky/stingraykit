@@ -21,7 +21,7 @@ namespace stingray
 		{
 			result
 					<< "\n  in function '" << toolkitEx->GetFunctionName() << "'"
-					<< "\n  in file '" << toolkitEx->GetFilename() << "' at line " << toolkitEx->GetLine()
+					<< "\n  in file '" << toolkitEx->GetFilename() << ":" << toolkitEx->GetLine() << "'"
 					<< "\n" << toolkitEx->GetBacktrace();
 		}
 	}
