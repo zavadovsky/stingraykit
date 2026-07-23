@@ -185,7 +185,7 @@ namespace stingray
 		constexpr static Time FromTimeT(time_t t)
 		{ return Time((s64)t * 1000); }
 
-		constexpr u32 ToTimeT() const
+		constexpr time_t ToTimeT() const
 		{ return _milliseconds / 1000; }
 
 		BrokenDownTime ToBrokenDownTime(TimeKind kind = TimeKind::Local) const;
